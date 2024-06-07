@@ -1,10 +1,10 @@
 @extends('app')
 @section('content')
-<div class="m-12 bg-sky-400 p-6">
+<div class="m-12 bg-sky-400 p-6 rounded-md shadow-xl">
     <h1 class="text-white text-4xl font-bold flex justify-center bg-sky-300 p-4 rounded-md">Pengeluaran</h1>
     <div class="flex items-center my-8 overflow-hidden justify-evenly text-black">
         
-        <form class="text-black" action="" method="POST">
+        <form class="text-black" id="pengeluaranForm">
             <div class="rounded-md bg-sky-200 p-2">
                 <label class="text-2xl w-full font-semibold" for="shift">Pilih Shift Anda :</label>
                 <select class="w-48 px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" name="shift" id="">
@@ -183,10 +183,45 @@
                     </tbody>
                 </table>
             </div>
-            <button class="btn btn-primary w-32 " type="submit">Submit</button> 
+            <button class="btn btn-primary w-32 " type="button" onclick="submitForm()">Submit</button> 
             <a class="btn btn-danger w-32 " href="/">Cancel</a>
-
         </form>
-    </div>  
+    </div> 
 </div>
+        <div id="popup" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Konfirmasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Data anda telah tersimpan.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="confirmPopup(true)">Oke</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="confirmPopup(false)">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Modal HTML -->
+        
 @endsection
+<script>
+    function submitForm() {
+            $('#popup').modal('show');
+        }
+
+        function confirmPopup(isConfirmed) {
+            if (isConfirmed) {
+                alert('Program akan kembali mengarah ke halaman utama.');
+                window.location.href = '/menu';
+            } else {
+                $('#popup').modal('hide');
+            }
+        }
+</script>
+

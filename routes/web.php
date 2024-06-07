@@ -14,3 +14,6 @@ Route::get('/kehadiran', function () {
 Route::get('/pengeluaran', function () {
     return view('layout.pengeluaran');
 });
+Route::get('/menu', function () {
+    return view('layout.menuscreen');
+});

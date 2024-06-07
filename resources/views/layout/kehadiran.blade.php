@@ -43,7 +43,7 @@
 
 <body>
     <div class="container form-container">
-        <h2 class="text-center mb-4">Kehadiran Karyawan</h2>
+        <h2 class="text-center mb-4 text-2xl font-bold text-black">Kehadiran Karyawan</h2>
         <form id="attendanceForm">
             <div class="form-group">
                 <label for="shift">Shift :</label>
@@ -129,10 +129,6 @@
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         function toggleNoteField(karyawanNumber) {
             const status = document.getElementById(`status${karyawanNumber}`).value;
@@ -151,7 +147,7 @@
         function confirmPopup(isConfirmed) {
             if (isConfirmed) {
                 alert('Program akan kembali mengarah ke halaman utama.');
-                window.location.href = 'menuscreen.blade.php';
+                window.location.href = '/menu';
             } else {
                 $('#popup').modal('hide');
             }

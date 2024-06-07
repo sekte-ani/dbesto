@@ -44,7 +44,7 @@
                                             <label>Password</label>
                                             <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Masukkan password">
                                         </div>
-                                        <a href="menuscreen" class="btn btn-primary btn-user btn-block">
+                                        <a href="/menu" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </a>
                                     </form>
