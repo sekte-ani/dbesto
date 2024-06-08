@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kehadiran Karyawan</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Style start -->
     <style>
         body {
             background-color: #38bdf8;
@@ -39,6 +41,7 @@
             border: none;
         }
     </style>
+    <!-- Style start -->
 </head>
 
 <body>
@@ -129,6 +132,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Script start -->
     <script>
         function toggleNoteField(karyawanNumber) {
             const status = document.getElementById(`status${karyawanNumber}`).value;
@@ -153,6 +158,8 @@
             }
         }
     </script>
+    <!-- Script end -->
+
 </body>
 
 </html>
