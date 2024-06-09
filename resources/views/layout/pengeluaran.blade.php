@@ -184,7 +184,6 @@
                 </table>
             </div>
             <button class="btn btn-primary w-32 " type="button" onclick="submitForm()">Submit</button> 
-            <a class="btn btn-danger w-32 " href="/">Cancel</a>
         </form>
     </div> 
 </div>
