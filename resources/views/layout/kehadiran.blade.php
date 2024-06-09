@@ -17,7 +17,7 @@
                 </tr>
 
                 <tr>
-                    <td> <label for="sesi">Sesi </label> </td>
+                    <td> <label for="sesi">Sesi</label> </td>
                     <td>:</td>
                     <td><Select type="Select" class="btn btn-primary dropdown-toggle w-36" data-bs-toggle="dropdown" aria-expanded="false">
                             Pilih Sesi

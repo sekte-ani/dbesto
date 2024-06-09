@@ -7,7 +7,7 @@
         <form class="text-black" id="pengeluaranForm">
             <div class="rounded-md p-2 flex items-center ">
                 <label class="text-lg  font-semibold" for="shift">Pilih Shift Anda :</label>
-                <select class="p-2 border-2 w-40 peer ml-4 rounded-md bg-[#007bff] text-white" name="shift" id="">
+                <select class="p-2 border-2 w-40 peer ml-4 rounded-md bg-[#007bff] text-white " name="shift" id="">
                     <option value="pagi">Pagi</option>
                     <option value="malam">Malam</option>
                 </select>
@@ -17,9 +17,13 @@
                 <label class=" flex flex-col text-lg font-semibold" for="tanggal">Tanggal Pemasukan :</label>
                 <input class="px-3 border-2 w-48 peer ml-4 rounded-md bg-[#007bff] text-white" type="date" name="tanggal" id="">
             </div>
+            <div class="flex justify-end">
+                <button class="btn-primary p-2 mx-2 rounded-md">Memasukan Data</button>
+                <button class="btn-warning p-2 mx-2 rounded-md">Print Data</button>
+            </div>
             <div class="flex justify-center ">
                 <table class="table table-bordered mt-3 max-w-screen-xl w-screen justify-center text-black rounded-md overflow-hidden ">
-                    <thead class="">
+                    <thead>
                         <tr>
                             <th>No</th>
                             <th>Produk</th>
@@ -193,12 +197,12 @@
                     </tbody>
                 </table>
             </div>
-            <button class="btn btn-primary w-32 " type="button" onclick="submitForm()">Submit</button>
-            <button class="btn btn-danger w-32 " type="button" onclick="resetForm()">Cancel</button>  
+            {{-- <button class="btn btn-primary w-32 " type="button" onclick="submitForm()">Submit</button>
+            <button class="btn btn-danger w-32 " type="button" onclick="resetForm()">Cancel</button>   --}}
         </form>
     </div> 
 </div>
-        <div id="popup" class="modal fade" tabindex="-1" role="dialog">
+        {{-- <div id="popup" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -216,11 +220,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 <!-- Modal HTML -->
         
 @endsection
-<script>
+{{-- <script>
     function submitForm() {
             $('#popup').modal('show');
         }
@@ -239,5 +243,5 @@
     }
 
 
-</script>
+</script> --}}
 

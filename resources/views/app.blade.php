@@ -35,6 +35,7 @@
             border: none;
         }
     </style>
+
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -47,6 +48,7 @@
     @vite('resources/css/app.css')
     <title>Dbesto</title>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <body>
     <body id="page-top">
 
@@ -70,15 +72,13 @@
                 <div class="sidebar-heading">
                     Pilih Menu
                 </div>
-    
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/kehadiran" >
+                    <a class="nav-link collapsed py-2" href="/kehadiran" >
                         Kehadiran
                     </a>
                 </li>
-    
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/pengeluaran" >
+                    <a class="nav-link collapsed py-2 " href="/pengeluaran" >
                         Pengeluaran
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -153,7 +153,7 @@
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -162,5 +162,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        feather.replace();
+      </script>
 </body>
 </html>
