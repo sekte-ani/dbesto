@@ -17,8 +17,8 @@
                 <label class=" flex flex-col text-lg font-semibold" for="tanggal">Tanggal Pemasukan :</label>
                 <input class="px-3 border-2 w-48 peer ml-4 rounded-md bg-[#007bff] text-white" type="date" name="tanggal" id="">
             </div>
-            <div class="flex justify-center">
-                <table class="table table-bordered mt-3 max-w-screen-2xl w-screen justify-center text-black rounded-md ">
+            <div class="flex justify-center ">
+                <table class="table table-bordered mt-3 max-w-screen-xl w-screen justify-center text-black rounded-md overflow-hidden ">
                     <thead class="">
                         <tr>
                             <th>No</th>
@@ -44,9 +44,12 @@
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td><select class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" name="Gas" id="">
-                            <option value="gas_besar">Gas Besar</option>
-                            <option value="gas_kecil">Gas Kecil</option>   
+                            <td>
+                                <label for="">Gas :</label>
+                                <select class="px-2 bg-[#007bff] border-0 border-b-2 border-gray-200 rounded-md text-white peer" name="Gas" id="">
+                                    <option value="">Pilih Jenis Gas </option>
+                                    <option value="gas_besar">Gas Besar</option>
+                                    <option value="gas_kecil">Gas Kecil</option>   
                             </select></td>
                             <td>
                                 <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
@@ -74,7 +77,9 @@
                         <tr>
                             <td>4</td>
                             <td>
-                            <select class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" name="Sayuran" id="">
+                                <label for="">Sayuran :</label>
+                            <select class="px-2 bg-[#007bff] border-0 border-b-2 border-gray-200 rounded-md text-white peer" name="Sayuran" id="">
+                                <option value="">Pilih Jenis Sayuran </option>
                                 <option value="">Sayuran</option>
                                 <option value="">Cabe dan Sayuran</option>
                                 <option value="">Cabe</option>
@@ -91,7 +96,12 @@
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td>Sabun Cuci Piring</td>
+                            <td><label for="">Sabun Cuci Piring :</label>
+                                <select class=" px-2 bg-[#007bff] border-0 border-b-2 border-gray-200 rounded-md text-white" name="Sayuran" id="">
+                                    <option value="">Pilih Jenis Sabun Cuci Piring </option>
+                                    <option value="">Mama Lemon</option>
+                                    <option value="">Sunlight</option>
+                            </select></td>
                             <td>
                                 <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
                             </td>
@@ -183,7 +193,8 @@
                     </tbody>
                 </table>
             </div>
-            <button class="btn btn-primary w-32 " type="button" onclick="submitForm()">Submit</button> 
+            <button class="btn btn-primary w-32 " type="button" onclick="submitForm()">Submit</button>
+            <button class="btn btn-danger w-32 " type="button" onclick="resetForm()">Cancel</button>  
         </form>
     </div> 
 </div>
@@ -222,5 +233,11 @@
                 $('#popup').modal('hide');
             }
         }
+
+    function resetForm() {
+        document.getElementById('pengeluaranForm').reset();
+    }
+
+
 </script>
 
