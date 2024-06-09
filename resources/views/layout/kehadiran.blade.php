@@ -1,52 +1,7 @@
 @extends('app')
 @section('content')
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kehadiran Karyawan</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Style start -->
-    <style>
-        body {
-            background-color: #38bdf8;
-        }
-
-        .form-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 50px;
-        }
-
-        .form-group label {
-            font-weight: bold;
-        }
-
-        .note {
-            display: none;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .modal-header,
-        .modal-footer {
-            border: none;
-        }
-    </style>
-    <!-- Style start -->
-</head>
-
-<body>
     <div class="container form-container">
-        <h2 class="text-center mb-4 text-2xl font-bold text-black">Kehadiran Karyawan</h2>
+        <h2 class="text-center mb-4 text-4xl font-bold text-black">Kehadiran Karyawan</h2>
         <form id="attendanceForm">
             <div class="form-group">
                 <label for="shift">Shift :</label>
@@ -159,7 +114,4 @@
         }
     </script>
     <!-- Script end -->
-
-</body>
-
-</html>
+@endsection

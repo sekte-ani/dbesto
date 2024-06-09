@@ -1,21 +1,21 @@
 @extends('app')
 @section('content')
-<div class="m-12 bg-sky-400 p-6 rounded-md shadow-xl">
-    <h1 class="text-white text-4xl font-bold flex justify-center bg-sky-300 p-4 rounded-md">Pengeluaran</h1>
+<div class="m-12 p-6 rounded-md shadow-xl bg-[#fff]">
+    <h1 class="text-black text-4xl font-bold flex justify-center p-4 rounded-md">Pengeluaran</h1>
     <div class="flex items-center my-8 overflow-hidden justify-evenly text-black">
         
         <form class="text-black" id="pengeluaranForm">
-            <div class="rounded-md bg-sky-200 p-2">
-                <label class="text-2xl w-full font-semibold" for="shift">Pilih Shift Anda :</label>
-                <select class="w-48 px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" name="shift" id="">
+            <div class="rounded-md p-2 flex items-center ">
+                <label class="text-lg  font-semibold" for="shift">Pilih Shift Anda :</label>
+                <select class="p-2 border-2 w-40 peer ml-4 rounded-md bg-[#007bff] text-white" name="shift" id="">
                     <option value="pagi">Pagi</option>
                     <option value="malam">Malam</option>
                 </select>
             </div>
             
-            <div class="rounded-md bg-sky-200 p-2 mt-4">
-                <label class=" flex flex-col text-2xl font-semibold" for="tanggal">Tanggal Pemasukan :</label>
-                <input class="px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="date" name="tanggal" id="">
+            <div class="rounded-md p-2 mt-4 flex items-center">
+                <label class=" flex flex-col text-lg font-semibold" for="tanggal">Tanggal Pemasukan :</label>
+                <input class="px-3 border-2 w-48 peer ml-4 rounded-md bg-[#007bff] text-white" type="date" name="tanggal" id="">
             </div>
             <div class="flex justify-center">
                 <table class="table table-bordered mt-3 max-w-screen-2xl w-screen justify-center text-black rounded-md ">
