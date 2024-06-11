@@ -6,8 +6,13 @@
         <div class="form-group mx-5">
             <table border="0">
                 <tr>
-                    <td> <label for="shift">Shift :</label> </td>
-                    <td> <Select type="Select" class="btn btn-primary dropdown-toggle w-48 h-10 mb-3 mt-3 ml-4" data-bs-toggle="dropdown" aria-expanded="false">
+                    <td>
+                        <p class="font-bold mt-4 mb-4">Shift</p>
+                    </td>
+                    <td>
+                        <p class="mt-4 mb-4 font-bold">:</p>
+                    </td>
+                    <td> <Select type="Select" class="btn btn-primary dropdown-toggle w-48 h-10 ml-4" data-bs-toggle="dropdown" aria-expanded="false">
                             Pilih Shift
                             <option selected>Pilih Shift</option>
                             <option value="1">Siang</option>
@@ -16,8 +21,13 @@
                 </tr>
 
                 <tr>
-                    <td> <label for="sesi">Sesi :</label> </td>
-                    <td><Select type="Select" class="btn btn-primary dropdown-toggle w-48 h-10 mb-3 ml-4" data-bs-toggle="dropdown" aria-expanded="false">
+                    <td>
+                        <p class="font-bold mt-4 mb-4">Sesi</p>
+                    </td>
+                    <td>
+                        <p class="mt-4 mb-4 font-bold">:</p>
+                    </td>
+                    <td><Select type="Select" class="btn btn-primary dropdown-toggle w-48 h-10 ml-4" data-bs-toggle="dropdown" aria-expanded="false">
                             Pilih Sesi
                             <option selected>Pilih Sesi</option>
                             <option value="1">Kedatangan</option>
@@ -27,13 +37,18 @@
                 </tr>
 
                 <tr>
-                    <td><label for="date">Masukkan Tanggal :</label></td>
-                    <td><input class="px-3 border-1 w-48 h-10 peer ml-4 rounded-md bg-primary text-white mb-4" type="date" name="tanggal" id=""></td>
+                    <td>
+                        <p class="mt-4 mb-4 font-bold">Masukkan Tanggal</p>
+                    </td>
+                    <td>
+                        <p class="mt-4 mb-4 font-bold">:</p>
+                    </td>
+                    <td><input class="px-3 border-1 w-48 h-10 peer ml-4 rounded-md bg-primary text-white " type="date" name="tanggal" id=""></td>
                 </tr>
             </table>
 
-            <div class="form-group">
-                <label for="karyawan1">Karyawan 1:</label>
+            <div class="form-group mt-3">
+                <label for="karyawan1">Karyawan 1 :</label>
                 <input type="text" class="form-control" id="karyawan1" name="karyawan1" placeholder="Nama Karyawan">
                 <select class="form-control mt-2" id="status1" name="status1" onchange="toggleNoteField(1)">
                     <option value="hadir">Hadir</option>
@@ -45,7 +60,7 @@
             </div>
 
             <div class="form-group">
-                <label for="karyawan2">Karyawan 2:</label>
+                <label for="karyawan2">Karyawan 2 :</label>
                 <input type="text" class="form-control" id="karyawan2" name="karyawan2" placeholder="Nama Karyawan">
                 <select class="form-control mt-2" id="status2" name="status2" onchange="toggleNoteField(2)">
                     <option value="hadir">Hadir</option>
@@ -57,7 +72,7 @@
             </div>
 
             <div class="form-group">
-                <label for="karyawan3">Karyawan 3:</label>
+                <label for="karyawan3">Karyawan 3 :</label>
                 <input type="text" class="form-control" id="karyawan3" name="karyawan3" placeholder="Nama Karyawan">
                 <select class="form-control mt-2" id="status3" name="status3" onchange="toggleNoteField(3)">
                     <option value="hadir">Hadir</option>
