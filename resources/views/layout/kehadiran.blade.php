@@ -3,12 +3,11 @@
 <div class="m-12 p-6 rounded-md shadow-xl bg-[#fff]">
     <h1 class="text-black text-4xl font-bold flex justify-center p-4 rounded-md">Kehadiran Karyawan</h1>
     <form class="text-black" id="kehadiranForm">
-        <div class="form-group">
+        <div class="form-group mx-5">
             <table border="0">
                 <tr>
-                    <td> <label for="shift">Shift</label> </td>
-                    <td>:</td>
-                    <td> <Select type="Select" class="btn btn-primary dropdown-toggle w-36" data-bs-toggle="dropdown" aria-expanded="false">
+                    <td> <label for="shift">Shift :</label> </td>
+                    <td> <Select type="Select" class="btn btn-primary dropdown-toggle w-48 h-10 mb-3 mt-3 ml-4" data-bs-toggle="dropdown" aria-expanded="false">
                             Pilih Shift
                             <option selected>Pilih Shift</option>
                             <option value="1">Siang</option>
@@ -17,9 +16,8 @@
                 </tr>
 
                 <tr>
-                    <td> <label for="sesi">Sesi</label> </td>
-                    <td>:</td>
-                    <td><Select type="Select" class="btn btn-primary dropdown-toggle w-36" data-bs-toggle="dropdown" aria-expanded="false">
+                    <td> <label for="sesi">Sesi :</label> </td>
+                    <td><Select type="Select" class="btn btn-primary dropdown-toggle w-48 h-10 mb-3 ml-4" data-bs-toggle="dropdown" aria-expanded="false">
                             Pilih Sesi
                             <option selected>Pilih Sesi</option>
                             <option value="1">Kedatangan</option>
@@ -30,18 +28,9 @@
 
                 <tr>
                     <td><label for="date">Masukkan Tanggal :</label></td>
+                    <td><input class="px-3 border-1 w-48 h-10 peer ml-4 rounded-md bg-primary text-white mb-4" type="date" name="tanggal" id=""></td>
                 </tr>
-
-
-
-
             </table>
-
-
-            <div class="form-group">
-
-                <input type="date" class="form-control col-sm-2 col-form-label" id="date" name="date">
-            </div>
 
             <div class="form-group">
                 <label for="karyawan1">Karyawan 1:</label>
