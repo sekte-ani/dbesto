@@ -99,8 +99,8 @@
                     <p>Data anda akan disimpan. Lanjutkan?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="confirmPopup(true)">Oke</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="confirmPopup(false)">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="confirmPopup(true)">Oke</button>
                 </div>
             </div>
         </div>
