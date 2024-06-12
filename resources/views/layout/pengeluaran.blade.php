@@ -5,18 +5,30 @@
     <div class="flex items-center my-8 overflow-hidden justify-evenly text-black">
         
         <form class="text-black" id="pengeluaranForm">
-            <div class="rounded-md p-2 flex items-center ">
-                <label class="text-lg  font-semibold" for="shift">Pilih Shift Anda :</label>
-                <select class="p-2 border-2 w-40 peer ml-4 rounded-md bg-[#007bff] text-white " name="shift" id="">
-                    <option value="pagi">Pagi</option>
-                    <option value="malam">Malam</option>
-                </select>
-            </div>
+            <table class="table-fixed">
+                <tr>
+                        <td class="items-end"><label class="text-lg  font-semibold" for="shift">Pilih Shift Anda </label></td>
+                        <td class="pl-3 items-center">:</td>
+                        <td>
+                                <select class="p-2 border-2 w-40 peer ml-4 rounded-md bg-[#007bff] text-white " name="shift" id="">
+                                    <option value="pagi">Pagi</option>
+                                    <option value="malam">Malam</option>
+                                </select>
+                        </td>
+                        
+                    </div>
+                </tr>
+                <tr>
+                    
+                        <td><label class=" flex flex-col text-lg font-semibold" for="tanggal">Tanggal Pemasukan </label></td>
+                        <td class="pl-3">:</td>
+                        <td><input class="px-3 border-2 w-48 peer ml-4 rounded-md bg-[#007bff] text-white" type="date" name="tanggal" id=""></td>
+                  
+                </tr>
+            </table>
             
-            <div class="rounded-md p-2 mt-4 flex items-center">
-                <label class=" flex flex-col text-lg font-semibold" for="tanggal">Tanggal Pemasukan :</label>
-                <input class="px-3 border-2 w-48 peer ml-4 rounded-md bg-[#007bff] text-white" type="date" name="tanggal" id="">
-            </div>
+            
+            
             <div class="flex justify-end">
                 <button class="btn-primary p-2 mx-2 rounded-md">Memasukan Data</button>
                 <button class="btn-warning p-2 mx-2 rounded-md">Print Data</button>

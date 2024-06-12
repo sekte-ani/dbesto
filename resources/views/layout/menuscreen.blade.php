@@ -37,7 +37,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-2xl font-bold mb-1 flex justify-between items-center text-black hover:text-blue-600 ">
-                                <a href="/kehadiran" class="hover:no-underline">Pengeluaran</a>
+                                <a href="/pengeluaran" class="hover:no-underline">Pengeluaran</a>
                                 <i data-feather="dollar-sign" class=""></i>
                             </div>
                         </div>
