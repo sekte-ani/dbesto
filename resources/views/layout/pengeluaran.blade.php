@@ -7,7 +7,7 @@
         <form class="text-black" id="pengeluaranForm">
             <table class="table-fixed">
                 <tr>
-                        <td class="items-end"><label class="text-lg  font-semibold" for="shift">Pilih Shift Anda </label></td>
+                        <td class="items-end"><label class="text-lg  font-semibold " for="shift">Pilih Shift Anda </label></td>
                         <td class="pl-3 items-center">:</td>
                         <td>
                                 <select class="p-2 border-2 w-40 peer ml-4 rounded-md bg-[#007bff] text-white " name="shift" id="">
@@ -30,214 +30,129 @@
             
             
             <div class="flex justify-end">
-                <button class="btn-primary p-2 mx-2 rounded-md">Memasukan Data</button>
                 <button class="btn-warning p-2 mx-2 rounded-md">Print Data</button>
             </div>
             <div class="flex justify-center ">
-                <table class="table table-bordered mt-3 max-w-screen-xl w-screen justify-center text-black rounded-md overflow-hidden ">
-                    <thead>
+                <table id="productTable" class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
                         <tr>
-                            <th>No</th>
-                            <th>Produk</th>
-                            <th>Harga</th>
-                            <th>Total</th>
-                            <th>Pengeluaran</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">No</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Produk</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Sub Produk / Produk Lainnya</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Harga</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Jumlah</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Total Harga</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Keterangan</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="productTableBody" class="bg-white divide-y divide-gray-200">
                         <tr>
-                            <td>1</td>
-                            <td>Makan Karyawan</td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
+                            <td class="px-6 py-4">1</td>
+                            <td class="px-6 py-4 text-white">
+                                <select class="w-full p-2  bg-blue-500 rounded-md border-0 border-gray-200 peer" onchange="handleProductChange(this)">
+                                    <option value="">Pilih Produk</option>
+                                    <option value="Gas">Gas</option>
+                                    <option value="Sayuran">Sayuran</option>
+                                    <option value="Sabun Cuci Piring">Sabun Cuci Piring</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
                             </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
+                            <td class="px-6 py-4 ">
+                                <select class="w-full p-2 text-white  bg-blue-500 rounded-md border-0 border-gray-200 peer sub-product" style="display:none;">
+                                    <option value="">Pilih Sub Produk</option>
+                                    <!-- Sub produk bisa diisi sesuai kebutuhan -->
+                                </select>
+                                <input type="text" class="w-full p-2 border-0 border-b-2 border-gray-200 peer other-product" style="display:none;" placeholder="Masukkan Produk Lainnya"/>
                             </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>
-                                <label for="">Gas :</label>
-                                <select class="px-2 bg-[#007bff] border-0 border-b-2 border-gray-200 rounded-md text-white peer" name="Gas" id="">
-                                    <option value="">Pilih Jenis Gas </option>
-                                    <option value="gas_besar">Gas Besar</option>
-                                    <option value="gas_kecil">Gas Kecil</option>   
-                            </select></td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Pulsa Listrik</td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>
-                                <label for="">Sayuran :</label>
-                            <select class="px-2 bg-[#007bff] border-0 border-b-2 border-gray-200 rounded-md text-white peer" name="Sayuran" id="">
-                                <option value="">Pilih Jenis Sayuran </option>
-                                <option value="">Sayuran</option>
-                                <option value="">Cabe dan Sayuran</option>
-                                <option value="">Cabe</option>
-                            </select></td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><label for="">Sabun Cuci Piring :</label>
-                                <select class=" px-2 bg-[#007bff] border-0 border-b-2 border-gray-200 rounded-md text-white" name="Sayuran" id="">
-                                    <option value="">Pilih Jenis Sabun Cuci Piring </option>
-                                    <option value="">Mama Lemon</option>
-                                    <option value="">Sunlight</option>
-                            </select></td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Pembersih Lantai</td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Rinso</td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Isi Ulang Air</td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>Air Bu Haji</td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>Tissue</td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>Keju Slice</td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
-                            </td>
-                            <td>
-                                <input class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer" type="number" placeholder = "-">
+                            <td class="px-6 py-4"><input type="number" class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer harga" oninput="calculateTotal(this)" placeholder="-" /></td>
+                            <td class="px-6 py-4"><input type="number" class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer jumlah" oninput="calculateTotal(this)" placeholder="-" /></td>
+                            <td class="px-6 py-4"><input type="number" class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer total" disabled placeholder="-" /></td>
+                            <td class="px-6 py-4"><input type="text" class="w-full px-0 bg-transparent border-0 border-b-2 border-gray-200 appearance-none peer keterangan" placeholder="-" /></td>
+                            <td class="px-6 py-4">
+                                <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="addRow()">Tambah Barang</button>
+                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="removeRow(this)" style="display:none;">Hapus</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+            
             </div>
-            {{-- <button class="btn btn-primary w-32 " type="button" onclick="submitForm()">Submit</button>
-            <button class="btn btn-danger w-32 " type="button" onclick="resetForm()">Cancel</button>   --}}
+            <button class="btn btn-primary w-32 " type="button" onclick="submitForm()">Submit</button>
+            <button class="btn btn-danger w-32 " type="button" onclick="resetForm()">Cancel</button>  
         </form>
-    </div> 
-</div>
-        {{-- <div id="popup" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Konfirmasi</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Data anda telah tersimpan.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="confirmPopup(true)">Oke</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="confirmPopup(false)">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-<!-- Modal HTML -->
-        
-@endsection
-{{-- <script>
-    function submitForm() {
+
+        <script>
+            function handleProductChange(selectElement) {
+                const subProductSelect = selectElement.parentElement.nextElementSibling.querySelector('.sub-product');
+                const otherProductInput = selectElement.parentElement.nextElementSibling.querySelector('.other-product');
+                const productValue = selectElement.value;
+    
+                subProductSelect.innerHTML = ''; // Clear previous options
+                if (productValue === "Lainnya") {
+                    subProductSelect.style.display = "none";
+                    otherProductInput.style.display = "block";
+                } else {
+                    subProductSelect.style.display = "block";
+                    otherProductInput.style.display = "none";
+    
+                    let subProducts = [];
+                    if (productValue === "Gas") {
+                        subProducts = ["Gas Kecil", "Gas Besar"];
+                    } else if (productValue === "Sayuran") {
+                        subProducts = ["Sayuran", "Cabe", "Sayuran dan Cabe"];
+                    } else if (productValue === "Sabun Cuci Piring") {
+                        subProducts = ["Mama Lemon", "Sunlight"];
+                    }
+    
+                    subProducts.forEach(subProduct => {
+                        const option = document.createElement("option");
+                        option.value = subProduct;
+                        option.text = subProduct;
+                        subProductSelect.appendChild(option);
+                    });
+                }
+            }
+    
+            function calculateTotal(element) {
+                const row = element.parentElement.parentElement;
+                const harga = parseFloat(row.querySelector('.harga').value) || 0;
+                const jumlah = parseFloat(row.querySelector('.jumlah').value) || 0;
+                const total = row.querySelector('.total');
+                total.value = harga * jumlah;
+            }
+    
+            function addRow() {
+                
+                const tableBody = document.getElementById('productTableBody');
+                const newRow = tableBody.rows[0].cloneNode(true);
+    
+                newRow.querySelectorAll('input').forEach(input => input.value = '');
+                newRow.querySelectorAll('select').forEach(select => select.value = '');
+                newRow.querySelector('.total').value = '';
+                newRow.querySelector('.sub-product').style.display = 'none';
+                newRow.querySelector('.other-product').style.display = 'none';
+    
+                newRow.querySelector('button[onclick="addRow()"]').style.display = 'none';
+                newRow.querySelector('button[onclick="removeRow(this)"]').style.display = 'inline-block';
+    
+                // Set row number
+                newRow.cells[0].textContent = tableBody.rows.length + 1;
+    
+                tableBody.appendChild(newRow);
+            }
+    
+            function removeRow(button) {
+                const row = button.parentElement.parentElement;
+                row.remove();
+    
+                // Update row numbers
+                const tableBody = document.getElementById('productTableBody');
+                for (let i = 0; i < tableBody.rows.length; i++) {
+                    tableBody.rows[i].cells[0].textContent = i + 1;
+                }
+            }
+            function submitForm() {
             $('#popup').modal('show');
         }
 
@@ -253,6 +168,34 @@
     function resetForm() {
         document.getElementById('pengeluaranForm').reset();
     }
+        </script>
+    </div> 
+</div>
+        <div id="popup" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Konfirmasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Data anda telah tersimpan.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="confirmPopup(false)">Cancel</button>yyy
+                        <button type="button" class="btn btn-primary" onclick="confirmPopup(true)">Oke</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Modal HTML -->
+        
+@endsection
+{{-- <script>
+    
 
 
 </script> --}}
