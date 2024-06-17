@@ -1,19 +1,17 @@
 <?php
 
+use App\Livewire\Expense;
+use App\Livewire\Home;
+use App\Livewire\Login;
+use App\Livewire\Presence;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('layout.menuscreen');
+Route::middleware('guest')->group(function (){
+    Route::get('/login', Login::class)->name('login');
 });
-Route::get('/login', function () {
-    return view('layout.login');
-});
-Route::get('/kehadiran', function () {
-    return view('layout.kehadiran');
-});
-Route::get('/pengeluaran', function () {
-    return view('layout.pengeluaran');
-});
-Route::get('/menu', function () {
-    return view('layout.menuscreen');
+
+Route::middleware('auth')->group(function (){
+    Route::get('/', Home::class)->name('home');
+    Route::get('/kehadiran', Presence::class)->name('presence.create');
+    Route::get('/pengeluaran', Expense::class)->name('expense.create');
 });
