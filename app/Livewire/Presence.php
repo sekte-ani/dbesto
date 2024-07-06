@@ -14,10 +14,12 @@ class Presence extends Component
 {
     use WithPagination;
 
-    #[Validate('required|string|max:25')]
+    public \App\Models\Presence $presenceModel;
+
+    #[Validate('required|string')]
     public string $shift;
 
-    #[Validate('required|string|max:25')]
+    #[Validate('required|string')]
     public string $session;
 
     public $employees = [];
@@ -31,10 +33,12 @@ class Presence extends Component
     #[Validate('nullable|date')]
     public $endDate = null;
 
+    public bool $edit = false;
+
     protected $rules = [
-        'employees.*.name' => 'required|string|max:225',
+        'employees.*.name' => 'required|string|max:50',
         'employees.*.status' => 'required|string',
-        'employees.*.status_note' => 'nullable|string|max:225',
+        'employees.*.status_note' => 'nullable|string|max:100',
     ];
 
     public function messages()
@@ -42,11 +46,11 @@ class Presence extends Component
         return [
             'employees.*.name.required' => 'The name field is required.',
             'employees.*.name.string' => 'The name field must be string.',
-            'employees.*.name.max:225' => 'The name field is too long.',
+            'employees.*.name.max:50' => 'The name field is too long.',
             'employees.*.status.required' => 'The status field is required.',
             'employees.*.status.string' => 'The status field must be string.',
             'employees.*.status_note.string' => 'The status note field must be string.',
-            'employees.*.status_note.max:225' => 'The status note field is too long.',
+            'employees.*.status_note.max:100' => 'The status note field is too long.',
         ];
     }
 
@@ -76,9 +80,9 @@ class Presence extends Component
         $this->validate();
 
         $this->dispatch('swal-dialog',
-            title: 'Anda ingin menyimpan data kehadiran?',
+            title:  $this->edit ? 'Anda ingin mengubah data kehadiran?' : 'Anda ingin menyimpan data kehadiran?',
             showCancelButton: true,
-            confirmButtonText: 'Simpan',
+            confirmButtonText: $this->edit ? 'Ubah' : 'Simpan',
             functionName: 'savePresence'
         );
     }
@@ -90,21 +94,39 @@ class Presence extends Component
 
         try {
 
-            foreach ($this->employees as $employee){
-                \App\Models\Presence::create([
-                    'shift' => $validated['shift'],
-                    'session' => $validated['session'],
-                    'name' => $employee['name'],
-                    'status' => $employee['status'],
-                    'status_note' => $employee['status_note'] == '' ? null : $employee['status_note'],
-                    'date' => $validated['date'],
-                ]);
-            }
+            if($this->edit){
+                foreach ($this->employees as $employee){
+                    $this->presenceModel->update([
+                        'shift' => $validated['shift'],
+                        'session' => $validated['session'],
+                        'name' => $employee['name'],
+                        'status' => $employee['status'],
+                        'status_note' => $employee['status'] == 'Izin' || $employee['status'] == 'Telat' ? $employee['status_note'] : null,
+                        'date' => $validated['date'],
+                    ]);
+                }
 
-            $this->dispatch('swal',
-                icon: 'success',
-                title: 'Data berhasil disimpan',
-            );
+                $this->dispatch('swal',
+                    icon: 'success',
+                    title: 'Data kehadiran berhasil diubah',
+                );
+            }else{
+                foreach ($this->employees as $employee){
+                    \App\Models\Presence::create([
+                        'shift' => $validated['shift'],
+                        'session' => $validated['session'],
+                        'name' => $employee['name'],
+                        'status' => $employee['status'],
+                        'status_note' => $employee['status_note'] == '' ? null : $employee['status_note'],
+                        'date' => $validated['date'],
+                    ]);
+                }
+
+                $this->dispatch('swal',
+                    icon: 'success',
+                    title: 'Data kehadiran berhasil disimpan',
+                );
+            }
 
             $this->reset();
             $this->redirectRoute('home', navigate: true);
@@ -114,6 +136,26 @@ class Presence extends Component
                 icon: 'error',
                 title: $e->getMessage(),
             );
+        }
+    }
+
+    public function editPresence(\App\Models\Presence $presence)
+    {
+        if($presence->exists){
+            $this->edit = true;
+            $this->presenceModel = $presence;
+
+            $this->shift = $presence->shift;
+            $this->session = $presence->session;
+            $this->date = $presence->date;
+
+            $this->employees = [
+                [
+                    'name' => $presence->name,
+                    'status' => $presence->status,
+                    'status_note' => $presence->status_note,
+                ],
+            ];
         }
     }
 

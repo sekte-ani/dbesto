@@ -175,6 +175,7 @@
                         <td>@currency($expense->total_price)</td>
                         <td>{{$date}}</td>
                         <td>
+                            <a href="#" class="btn btn-sm btn-primary" wire:click.prevent="editExpense({{$expense->id}})">Edit</a>
                             <a href="#" class="btn btn-sm btn-danger" wire:click.prevent="deleteModalExpense({{$expense->id}})">Hapus</a>
                         </td>
                     </tr>

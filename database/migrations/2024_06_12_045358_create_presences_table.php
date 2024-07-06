@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->enum('shift', ['Siang', 'Malam']);
             $table->enum('session', ['Kedatangan', 'Kepulangan']);
-            $table->string('name', 255);
+            $table->string('name', 50);
             $table->enum('status', ['Hadir', 'Izin', 'Tanpa Keterangan', 'Telat']);
-            $table->string('status_note', 255)->nullable();
+            $table->string('status_note', 100)->nullable();
             $table->date('date');
         });
     }

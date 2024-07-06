@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('expense_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->string('name', 255);
+            $table->string('name', 50);
             $table->integer('price');
             $table->integer('quantity');
             $table->integer('total_price');
-            $table->string('note', 255)->nullable();
+            $table->string('note', 100)->nullable();
             $table->timestamps();
         });
     }

@@ -122,7 +122,6 @@
                         @endif
                     </div>
                 @endforeach
-
                 <button class="btn btn-primary w-32 " type="submit">Submit</button>
 
             </div>
@@ -172,6 +171,7 @@
                         <td>{{$presence->status_note ?? '-'}}</td>
                         <td>{{$date}}</td>
                         <td>
+                            <a href="#" class="btn btn-sm btn-primary" wire:click.prevent="editPresence({{$presence->id}})">Edit</a>
                             <a href="#" class="btn btn-sm btn-danger" wire:click.prevent="deleteModalPresence({{$presence->id}})">Hapus</a>
                         </td>
                     </tr>

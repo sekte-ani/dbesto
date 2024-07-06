@@ -8,10 +8,10 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    #[Validate('required|string|max:25')]
+    #[Validate('required|string|max:50')]
     public string $username = '';
 
-    #[Validate('required|string|max:25')]
+    #[Validate('required|string|max:50')]
     public string $password = '';
 
     public function login()

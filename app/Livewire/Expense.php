@@ -16,7 +16,9 @@ class Expense extends Component
 {
     use WithPagination;
 
-    #[Validate('required|string|max:25')]
+    public \App\Models\Expense $expenseModel;
+
+    #[Validate('required|string')]
     public string $shift;
 
     #[Validate('required|date')]
@@ -31,12 +33,14 @@ class Expense extends Component
     public $products = [];
     public $options = [];
 
+    public bool $edit = false;
+
     protected $rules = [
-        'products.*.name' => 'required|string|max:255',
+        'products.*.name' => 'required|string|max:50',
         'products.*.price' => 'required|integer|min:1',
         'products.*.quantity' => 'required|integer|min:1',
         'products.*.total_price' => 'required|integer',
-        'products.*.note' => 'max:225'
+        'products.*.note' => 'max:100'
     ];
 
     public function messages()
@@ -44,7 +48,7 @@ class Expense extends Component
         return [
             'products.*.name.required' => 'The name field is required.',
             'products.*.name.string' => 'The name field must be string.',
-            'products.*.name.max:225' => 'The name field is too long.',
+            'products.*.name.max:50' => 'The name field is too long.',
             'products.*.price.required' => 'The price field is required.',
             'products.*.price.int' => 'The price field must be number.',
             'products.*.price.min:1' => 'The price field must be more than 1.',
@@ -54,7 +58,7 @@ class Expense extends Component
             'products.*.total_price.int' => 'The total price field must be number.',
             'products.*.total_price.min:1' => 'The total price field must be more than 1.',
             'products.*.note.string' => 'The note field must be string.',
-            'products.*.note.max:225' => 'The note field is too long.',
+            'products.*.note.max:100' => 'The note field is too long.',
         ];
     }
 
@@ -136,9 +140,9 @@ class Expense extends Component
             $this->validate();
 
             $this->dispatch('swal-dialog',
-                title: 'Anda ingin menyimpan data pengeluaran?',
+                title: $this->edit ? 'Anda ingin mengubah data pengeluaran?' : 'Anda ingin menyimpan data pengeluaran?',
                 showCancelButton: true,
-                confirmButtonText: 'Oke',
+                confirmButtonText: $this->edit ? 'Ubah' : 'Simpan',
                 functionName: 'saveExpense'
             );
         }
@@ -149,6 +153,59 @@ class Expense extends Component
         $this->reset('startDate', 'endDate');
     }
 
+    public function editExpense(\App\Models\Expense $expense)
+    {
+        if($expense->exists){
+            $this->edit = true;
+
+            $this->expenseModel = $expense;
+            $products = Product::where('expense_id', $expense->id)->get();
+
+            $this->shift = $expense->shift;
+            $this->date = $expense->date;
+
+            unset($this->products[0]);
+            $this->products = array_values($this->products);
+
+            foreach ($products as $product){
+                if($product->name == 'Gas Kecil' || $product->name == 'Gas Besar'){
+                    $option = 'Gas';
+                    $show_option = true;
+                }elseif($product->name == 'Sayuran' || $product->name == 'Sayuran + Cabe'){
+                    $option = 'Sayuran';
+                    $show_option = true;
+                }else if($product->name == 'Mamalemon' || $product->name == 'Sunlight'){
+                    $option = 'Sabun Cuci Piring';
+                    $show_option = true;
+                }else{
+                    $option = 'Lainnya';
+                    $show_option = false;
+                }
+
+                $this->products[] = [
+                    'id' => $product->id,
+                    'option' => $option,
+                    'show_option' => $show_option,
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'quantity' => $product->quantity,
+                    'total_price' => $product->total_price,
+                    'note' => $product->note
+                ];
+            }
+
+            foreach($this->products as $index => $product){
+                if($product['option'] == 'Gas'){
+                    $this->options[$index] = ['Gas Kecil', 'Gas Besar'];
+                }elseif($product['option'] == 'Sayuran'){
+                    $this->options[$index] = ['Sayuran', 'Sayuran + Cabe', 'Cabe'];
+                }elseif($product['option'] == 'Sabun Cuci Piring'){
+                    $this->options[$index] = ['Mamalemon', 'Sunlight'];
+                }
+            }
+        }
+    }
+
     #[On('saveExpense')]
     public function saveExpense()
     {
@@ -156,36 +213,82 @@ class Expense extends Component
 
         try {
 
-            $expense = \App\Models\Expense::create([
-                'shift' => $validated['shift'],
-                'date' => $validated['date']
-            ]);
+            if($this->edit){
 
-            $total_price = 0;
+                $total_price = 0;
 
-            foreach ($this->products as $product){
-                $total_price += $product['total_price'];
+                foreach ($this->products as $product){
+                    $total_price += $product['total_price'];
 
-                Product::create([
-                    'expense_id' => $expense->id,
-                    'name' => $product['name'],
-                    'price' => $product['price'],
-                    'quantity' => $product['quantity'],
-                    'total_price' => $product['total_price'],
-                    'note' => $product['note'] ?? null
+                    if(array_key_exists('id',$product)){
+                        $productModel = Product::find($product['id']);
+
+                        $productModel->update([
+                            'name' => $product['name'],
+                            'price' => $product['price'],
+                            'quantity' => $product['quantity'],
+                            'total_price' => $product['total_price'],
+                            'note' => $product['note'] ?? null
+                        ]);
+
+                    }else{
+                        Product::create([
+                            'expense_id' => $this->expenseModel->id,
+                            'name' => $product['name'],
+                            'price' => $product['price'],
+                            'quantity' => $product['quantity'],
+                            'total_price' => $product['total_price'],
+                            'note' => $product['note'] ?? null
+                        ]);
+                    }
+
+                }
+
+                $this->expenseModel->update([
+                    'shift' => $validated['shift'],
+                    'date' => $validated['date'],
+                    'total_price' => $total_price,
                 ]);
+
+                DB::commit();
+
+                $this->dispatch('swal',
+                    icon: 'sucess',
+                    title: 'Data pengeluaran berhasil diubah',
+                );
+
+            }else{
+                $expense = \App\Models\Expense::create([
+                    'shift' => $validated['shift'],
+                    'date' => $validated['date']
+                ]);
+
+                $total_price = 0;
+
+                foreach ($this->products as $product){
+                    $total_price += $product['total_price'];
+
+                    Product::create([
+                        'expense_id' => $expense->id,
+                        'name' => $product['name'],
+                        'price' => $product['price'],
+                        'quantity' => $product['quantity'],
+                        'total_price' => $product['total_price'],
+                        'note' => $product['note'] ?? null
+                    ]);
+                }
+
+                $expense->update([
+                    'total_price' => $total_price
+                ]);
+
+                DB::commit();
+
+                $this->dispatch('swal',
+                    icon: 'sucess',
+                    title: 'Data pengeluaran berhasil disimpan',
+                );
             }
-
-            $expense->update([
-                'total_price' => $total_price
-            ]);
-
-            DB::commit();
-
-            $this->dispatch('swal',
-                icon: 'sucess',
-                title: 'Data pengeluaran berhasil disimpan',
-            );
 
             $this->reset();
             $this->redirectRoute('home', navigate: true);
